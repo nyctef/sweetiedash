@@ -20,6 +20,10 @@ namespace sweetiedash
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/charts").Include(
+                      "~/Scripts/d3.js",
+                      "~/Scripts/charts.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
