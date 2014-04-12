@@ -13,7 +13,7 @@ namespace sweetiedash.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            var jsonResponse = await new HttpClient().GetAsync("http://nyc-02.cloudapp.net");
+            var jsonResponse = await new HttpClient().GetAsync("http://nyc-03.cloudapp.net");
             var json = await jsonResponse.Content.ReadAsStringAsync();
 
             ViewBag.Model = JObject.Parse(json);
