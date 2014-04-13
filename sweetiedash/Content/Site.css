@@ -50,6 +50,10 @@ td {
     border-top: none !important;
 }
 
+a {
+    color: steelblue;
+}
+
 .bar {
   fill: steelblue;
 }
