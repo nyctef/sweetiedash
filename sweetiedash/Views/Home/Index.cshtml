@@ -62,8 +62,8 @@
 
 @section scripts {
     <script>barChart("#hod", @(Html.Raw(@ViewBag.Model.byHOD.ToString())) )</script>
-    <script>barChart("#deowls", @Html.Raw(@ViewBag.Model.deowls.ToString()), 500 )</script>
-    <script>barChart("#deowlfails", @Html.Raw(@ViewBag.Model.deowlfails.ToString()), 500 )</script>
+    <script>barChart("#deowls", @Html.Raw(@ViewBag.Model.deowls.ToString()), 500, true)</script>
+    <script>barChart("#deowlfails", @Html.Raw(@ViewBag.Model.deowlfails.ToString()), 500, true )</script>
     <script>barChart("#topspeakers", @Html.Raw(@ViewBag.Model.bySpeaker.ToString()), 500, true )</script>
     <script>barChart("#topemotes", @Html.Raw(@ViewBag.Model.emotes.ToString()), 500, true )</script>
 }
