@@ -2,14 +2,26 @@
     ViewBag.Title = "sweetiedash";
 }
 
-<div class="jumbotron">
-    <h1>sweetiebot dashboard</h1>
-    <p class="lead">[@ViewBag.Model.total total messages processed]</p>
-    <p><a href="@ViewBag.Target">raw data</a></p>
+@helper BigNumber(object description, object number) {
+    <h2>@number</h2>
+    <p>@description</p>
+}
+
+@helper Panel(string extraClass, object content) { 
+    <div class="@extraClass panel panel-default">
+        <div class="panel-body">
+            @content
+        </div>
+    </div>
+    }
+
+<div class="row jumbotron">
+    <h1 style="float:left">sweetiebot dashboard</h1>
+    <p style="float:right; margin-top: 40px;"><a href="@ViewBag.Target">raw data</a></p>
 </div>
 
-<div class="row panel">
-    <div class="col-md-12 panel-default panel-body" style="height:200px; overflow-y:scroll">
+<div class="row panel panel-default">
+    <div class="col-md-12 panel-body" style="height:200px; overflow-y:scroll">
         <table class="table">
             @foreach (string s in ViewBag.Model.tail)
             {
@@ -19,4 +31,10 @@
         </table>
 
     </div>
+</div>
+
+<div class="row">
+    @Panel("col-md-4", @BigNumber("total messages processed", @ViewBag.Model.total))
+    @Panel("col-md-4", @BigNumber(":lunabeh:s", @ViewBag.Model.lunabehs))
+    @Panel("col-md-4", @BigNumber("sweetiebot replies", @ViewBag.Model.sweetreply))
 </div>
