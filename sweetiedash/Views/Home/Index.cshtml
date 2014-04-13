@@ -41,11 +41,19 @@
 </div>
 
 @helper hod() {<div id="hod"><h2>messages by time of day</h2></div>}
+@helper deowls() {<div id="deowls"><h2>deowls</h2></div>}
+@helper deowlfails() {<div id="deowlfails"><h2>deowlfails</h2></div>}
+<div class="row">
+    @Panel("col-md-12", @hod())
+</div>
 
 <div class="row">
-    @Panel("col-md-12", @hod());
+    @Panel("col-md-6", @deowls())
+    @Panel("col-md-6", @deowlfails())
 </div>
 
 @section scripts {
-    <script>barChart("#hod", @Html.Raw(@ViewBag.Model.byHOD.ToString()) );</script>
+    <script>barChart("#hod", @(Html.Raw(@ViewBag.Model.byHOD.ToString())) )</script>
+    <script>barChart("#deowls", @Html.Raw(@ViewBag.Model.deowls.ToString()), 500 )</script>
+    <script>barChart("#deowlfails", @Html.Raw(@ViewBag.Model.deowlfails.ToString()), 500 )</script>
 }

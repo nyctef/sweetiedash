@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 // based on http://bl.ocks.org/mbostock/3885304
-function barChart(parentSelector, dict) {
+function barChart(parentSelector, dict, width) {
 
     var data = [];
     for (var key in dict) {
@@ -9,8 +9,8 @@ function barChart(parentSelector, dict) {
     }
     console.log(data);
     var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = (width || 960) - margin.left - margin.right,
+        height = 200 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal()
         .rangeRoundBands([0, width], .1);
