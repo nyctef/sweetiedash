@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 // based on http://bl.ocks.org/mbostock/3885304
-function barChart(parentSelector, dict, width) {
+function barChart(parentSelector, dict, width, rotatexlabels) {
 
     var data = [];
     for (var key in dict) {
@@ -37,10 +37,17 @@ function barChart(parentSelector, dict, width) {
     console.log('ymax:'+ymax);
     y.domain([0, ymax]);
 
-    svg.append("g")
+    var xaxis = svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
+
+    if (rotatexlabels) {
+        xaxis.selectAll("text")
+            .style("text-anchor", "start")
+            .attr("dx", "-1.3em")
+            .attr("transform", function (d) { return "rotate(20)" });
+    }
 
     svg.append("g")
         .attr("class", "y axis")
