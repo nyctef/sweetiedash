@@ -2,31 +2,32 @@
     ViewBag.Title = "sweetiedash";
 }
 
-@helper BigNumber(object description, object number) {
+@helper BigNumber(object description, object number)
+{
     <h2>@number</h2>
     <p>@description</p>
 }
 
-@helper Panel(string extraClass, object content) { 
+@helper Panel(string extraClass, object content)
+{
     <div class="@extraClass panel panel-default">
         <div class="panel-body">
             @content
         </div>
     </div>
-    }
+}
 
 <div class="row jumbotron">
-    <h1 style="float:left">sweetiebot dashboard</h1>
-    <p style="float:right; margin-top: 40px;"><a href="@ViewBag.Target">raw data</a></p>
+    <h1 style = "float:left" > sweetiebot dashboard </h1 >
+    <p style = "float:right; margin-top: 40px;" ><a href = "@ViewBag.Target" > raw data </a ></p >
 </div>
 
 <div class="row panel panel-default">
     <div class="col-md-12 panel-body" style="height:200px; overflow-y:scroll">
         <table class="table">
-            @foreach (string s in ViewBag.Model.tail)
-            {
-                @:
-                <tr><td>@s</td></tr>
+            @foreach(string s in ViewBag.Model.tail)
+        {
+            @:<tr><td>@s</td></tr>
             }
         </table>
 
@@ -38,3 +39,13 @@
     @Panel("col-md-4", @BigNumber(":lunabeh:s", @ViewBag.Model.lunabehs))
     @Panel("col-md-4", @BigNumber("sweetiebot replies", @ViewBag.Model.sweetreply))
 </div>
+
+@helper hod() {<div id="hod"><h2>messages by time of day</h2></div>}
+
+<div class="row">
+    @Panel("col-md-12", @hod());
+</div>
+
+@section scripts {
+    <script>barChart("#hod", @Html.Raw(@ViewBag.Model.byHOD.ToString()) );</script>
+}
