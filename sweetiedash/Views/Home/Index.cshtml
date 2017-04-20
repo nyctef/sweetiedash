@@ -22,18 +22,6 @@
     <p style="float:right; margin-top: 40px;"><a href="@ViewBag.Target"> raw data </a></p>
 </div>
 
-<div class="row panel panel-default">
-    <div class="col-md-12 panel-body" style="height:200px; overflow-y:scroll">
-        <table class="table">
-            @foreach(string s in ViewBag.Model.tail)
-        {
-            @:<tr><td>@s</td></tr>
-            }
-        </table>
-
-    </div>
-</div>
-
 <div class="row">
     @Panel("col-md-4", @BigNumber("total messages processed", @ViewBag.Model.total))
     @Panel("col-md-4", @BigNumber(":lunabeh:s", @ViewBag.Model.lunabehs))
