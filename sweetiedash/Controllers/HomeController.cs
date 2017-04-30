@@ -13,7 +13,7 @@ namespace sweetiedash.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            var target = "http://nyc-03.cloudapp.net";
+            var target = "http://nyc-06.uksouth.cloudapp.azure.com/";
             var jsonResponse = await new HttpClient().GetAsync(target);
             var json = await jsonResponse.Content.ReadAsStringAsync();
 
